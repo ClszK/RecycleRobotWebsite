@@ -8,7 +8,7 @@ import AlertCircleOutline from 'mdi-material-ui/AlertCircleOutline'
 const navigation = () => {
   return [
     {
-      title: 'Dashboard',
+      title: 'User Interface',
       icon: HomeOutline,
       path: '/'
     },

@@ -26,7 +26,7 @@ const TrophyImg = styled('img')({
 const testReqeust = new Request('http://34.64.221.5:7579/Mobius/test/test/la', {
   method: 'GET',
   headers: {
-    "Accept":"application/json",
+    Accept: 'application/json',
     'X-M2M-RI': '12345',
     'X-M2M-Origin': 'SOrigin'
   }
@@ -49,7 +49,7 @@ const Trophy = () => {
         }
       })
       .then(respones => {
-        console.log(respones.data.results)
+        console.log(respones.data)
       })
   }
 
