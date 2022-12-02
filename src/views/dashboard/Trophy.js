@@ -23,15 +23,6 @@ const TrophyImg = styled('img')({
   position: 'absolute'
 })
 
-const testReqeust = new Request('http://34.64.221.5:7579/Mobius/test/test/la', {
-  method: 'GET',
-  headers: {
-    Accept: 'application/json',
-    'X-M2M-RI': '12345',
-    'X-M2M-Origin': 'SOrigin'
-  }
-})
-
 const Trophy = () => {
   // ** Hook
   const theme = useTheme()
@@ -41,11 +32,11 @@ const Trophy = () => {
 
   const buttonClickHandler = () => {
     axios
-      .get('http://34.64.221.5:7579/Mobius/test/test/la', {
+      .get('http://34.64.221.5:7579/Mobius/robot1/', {
         headers: {
           Accept: 'application/json',
           'X-M2M-RI': '12345',
-          'X-M2M-Origin': 'SOrigin'
+          'X-M2M-Origin': 'S'
         }
       })
       .then(respones => {

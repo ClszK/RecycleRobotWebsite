@@ -3,6 +3,7 @@ import Login from 'mdi-material-ui/Login'
 import HomeOutline from 'mdi-material-ui/HomeOutline'
 import AccountCogOutline from 'mdi-material-ui/AccountCogOutline'
 import AccountPlusOutline from 'mdi-material-ui/AccountPlusOutline'
+import ViewDashboard from 'mdi-material-ui/ViewDashboard'
 import AlertCircleOutline from 'mdi-material-ui/AlertCircleOutline'
 
 const navigation = () => {
@@ -11,6 +12,11 @@ const navigation = () => {
       title: 'User Interface',
       icon: HomeOutline,
       path: '/'
+    },
+    {
+      title: 'Dash Board',
+      icon: ViewDashboard,
+      path: '/dashboard'
     },
     {
       title: 'Account Settings',
