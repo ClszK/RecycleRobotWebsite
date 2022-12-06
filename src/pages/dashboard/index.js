@@ -39,7 +39,13 @@ const Dashboard = () => {
         <Grid container spacing={4}>
           {robotDatas.map(index => (
             <Grid key={index.id} item md={4} xs={6}>
-              <Link passHref href='/dashboard/robot'>
+              <Link
+                passHref
+                href={{
+                  pathname: '/dashboard/robot',
+                  query: { params: JSON.stringify(index) }
+                }}
+              >
                 <Paper
                   sx={[
                     {
@@ -84,3 +90,4 @@ const Dashboard = () => {
 }
 
 export default Dashboard
+
