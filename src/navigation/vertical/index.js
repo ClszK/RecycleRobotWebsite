@@ -24,6 +24,11 @@ const navigation = () => {
       path: '/account-settings'
     },
     {
+      title: 'test',
+      icon: AccountCogOutline,
+      path: '/test'
+    },
+    {
       sectionTitle: 'Pages'
     },
     {

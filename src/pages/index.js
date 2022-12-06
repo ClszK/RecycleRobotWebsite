@@ -33,7 +33,7 @@ import { Player } from '@lottiefiles/react-lottie-player'
 const Dashboard = () => {
   const buttonClickHandler = () => {
     axios
-      .get('http://34.64.221.5:7579/Mobius/robot1/', {
+      .get('http://34.64.221.5:7579/Mobius/robot1/la', {
         headers: {
           'Accept': 'application/json',
           'X-M2M-RI': '12345',
