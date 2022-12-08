@@ -3,17 +3,18 @@ import { Box } from '@mui/material'
 import axios from 'axios'
 
 const request = (serverURL, headers, AEname = '', dir = '') => {
-  const respone = {}
   axios
     .get(`${serverURL}/Mobius${AEname}${dir}`, {
       headers: headers
     })
-    .then(respones => (respone = respones.data))
+    .then(respones => {
+      console.log(respones.data)
+
+      return respones.data
+    })
     .catch(e => {
       console.log(e)
     })
-
-  return respone
 }
 
 const getApplicationEntity = (AEname, serverURL) => {
@@ -52,6 +53,7 @@ const getApplicationEntityList = serverURL => {
   }
 
   const res = request(serverURL, header, '?fu=1&ty=2&lim=20')
+  console.log(res)
   console.log(res)
 
   // return JSON.parse(res)
