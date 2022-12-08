@@ -11,22 +11,12 @@ const navigation = () => {
     {
       title: 'User Interface',
       icon: HomeOutline,
-      path: '/'
-    },
-    {
-      title: 'Dash Board',
-      icon: ViewDashboard,
       path: '/dashboard'
     },
     {
       title: 'Account Settings',
       icon: AccountCogOutline,
       path: '/account-settings'
-    },
-    {
-      title: 'test',
-      icon: AccountCogOutline,
-      path: '/test'
     },
     {
       sectionTitle: 'Pages'

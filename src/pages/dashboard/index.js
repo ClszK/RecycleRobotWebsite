@@ -11,19 +11,19 @@ import { Player } from '@lottiefiles/react-lottie-player'
 
 const robotDatas = [
   {
-    name: 'robot1',
+    name: 'Robot1',
     id: '1',
     imgsrc: 'https://assets9.lottiefiles.com/packages/lf20_wh1si7js.json'
   },
   {
-    name: 'robot2',
+    name: 'Robot2',
     id: '2',
     imgsrc: 'https://assets9.lottiefiles.com/packages/lf20_pmhz1tar.json'
   },
   {
-    name: 'robot3',
+    name: 'Robot3',
     id: '3',
-    imgsrc: 'https://assets9.lottiefiles.com/packages/lf20_pmhz1tar.json'
+    imgsrc: 'https://assets8.lottiefiles.com/packages/lf20_3flf0dzg.json'
   }
 ]
 

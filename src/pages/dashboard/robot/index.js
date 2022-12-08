@@ -23,7 +23,7 @@ const Robot = () => {
   const lottieRef = useRef()
 
   const [wait, setWait] = useState(false)
-  const [arrival, setArrival] = useState(true)
+  const [arrival, setArrival] = useState(false)
 
   //   const AElist = getApplicationEntityList('http://34.64.221.5:7579')
 
