@@ -1,13 +1,9 @@
 import React, { createContext, useReducer, useContext } from 'react'
+import axios from 'axios'
 
 // UsersContext 에서 사용 할 기본 상태
 const initialState = {
-  users: {
-    loading: false,
-    data: null,
-    error: null
-  },
-  user: {
+  m2m_uril: {
     loading: false,
     data: null,
     error: null
@@ -38,7 +34,7 @@ const error = error => ({
 // 위에서 만든 객체 / 유틸 함수들을 사용하여 리듀서 작성
 function usersReducer(state, action) {
   switch (action.type) {
-    case 'GET_USERS':
+    case 'GET_AElist':
       return {
         ...state,
         users: loadingState
@@ -74,23 +70,23 @@ function usersReducer(state, action) {
 }
 
 // State 용 Context 와 Dispatch 용 Context 따로 만들어주기
-const UsersStateContext = createContext(null)
-const UsersDispatchContext = createContext(null)
+const MobiusStateContext = createContext(null)
+const MobiusDispatchContext = createContext(null)
 
 // 위에서 선언한 두가지 Context 들의 Provider 로 감싸주는 컴포넌트
-export function UsersProvider({ children }) {
+export function MobiusProvider({ children }) {
   const [state, dispatch] = useReducer(usersReducer, initialState)
 
   return (
-    <UsersStateContext.Provider value={state}>
-      <UsersDispatchContext.Provider value={dispatch}>{children}</UsersDispatchContext.Provider>
-    </UsersStateContext.Provider>
+    <MobiusStateContext.Provider value={state}>
+      <MobiusDispatchContext.Provider value={dispatch}>{children}</MobiusDispatchContext.Provider>
+    </MobiusStateContext.Provider>
   )
 }
 
 // State 를 쉽게 조회 할 수 있게 해주는 커스텀 Hook
-export function useUsersState() {
-  const state = useContext(UsersStateContext)
+export function useMobiusState() {
+  const state = useContext(MobiusStateContext)
   if (!state) {
     throw new Error('Cannot find UsersProvider')
   }
@@ -100,10 +96,10 @@ export function useUsersState() {
 
 // Dispatch 를 쉽게 사용 할 수 있게 해주는 커스텀 Hook
 export function useUsersDispatch() {
-  const dispatch = useContext(UsersDispatchContext)
+  const dispatch = useContext(MobiusDispatchContext)
   if (!dispatch) {
     throw new Error('Cannot find UsersProvider')
   }
-  
+
   return dispatch
 }
