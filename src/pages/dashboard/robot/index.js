@@ -8,6 +8,8 @@ import StatBox from 'src/@core/components/StateBox'
 import { Player } from '@lottiefiles/react-lottie-player'
 import PieChart from 'src/@core/components/PieChart'
 import { LoadingButton } from '@mui/lab'
+import { useState } from 'react'
+import NestedModal from 'src/@core/components/NestedModal'
 
 const request = (serverURL, headers, AEname = '', dir = '') => {
   const respone = ''
@@ -110,6 +112,8 @@ const Robot = () => {
   const { params: robotData } = router.query || []
   const testFunction = headers => {}
   const motor = true
+  const [test, setTest] = useState(false)
+  const [arrival, setArrival] = useState(false)
 
   //   const AElist = getApplicationEntityList('http://34.64.221.5:7579')
 
@@ -127,13 +131,21 @@ const Robot = () => {
               fontWeight: 'bold',
               padding: '10px 20px'
             }}
-            loading={false}
+            loading={test}
+            onClick={() => setTest(true)}
           >
             Call Recycle Robot
           </LoadingButton>
+          <button
+            onClick={() => {
+              setArrival(true)
+            }}
+          >
+            test
+          </button>
         </Box>
       </Box>
-
+      {arrival && <NestedModal open={arrival} />}
       {/* GRID & CHARTS */}
       <Box display='grid' gridTemplateColumns='repeat(12, 1fr)' gridAutoRows='100px' gap='20px'>
         {/* ROW 1 */}
