@@ -8,17 +8,22 @@ import StatBox from 'src/@core/components/StateBox'
 import { Player } from '@lottiefiles/react-lottie-player'
 import PieChart from 'src/@core/components/PieChart'
 import { LoadingButton } from '@mui/lab'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import NestedModal from 'src/@core/components/NestedModal'
 
 const Robot = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
+
   const router = useRouter()
-  const { params: robotData } = router.query || []
+  const { params } = router.query
+  const robotData = JSON.parse(params)
   const motor = true
-  const [test, setTest] = useState(false)
-  const [arrival, setArrival] = useState(false)
+
+  const lottieRef = useRef()
+
+  const [wait, setWait] = useState(false)
+  const [arrival, setArrival] = useState(true)
 
   //   const AElist = getApplicationEntityList('http://34.64.221.5:7579')
 
@@ -26,7 +31,7 @@ const Robot = () => {
     <Box m='20px'>
       {/* HEADER */}
       <Box display='flex' justifyContent='space-between' alignItems='center'>
-        <Header title='DASHBOARD' subtitle='Welcome to your dashboard' />
+        <Header title={`${robotData.name}'s DASHBOARD`} subtitle='Welcome to your dashboard' />
         <Box>
           <LoadingButton
             sx={{
@@ -36,18 +41,14 @@ const Robot = () => {
               fontWeight: 'bold',
               padding: '10px 20px'
             }}
-            loading={test}
-            onClick={() => setTest(true)}
+            loading={wait && !arrival}
+            onClick={() => {
+              setWait(true)
+              lottieRef.current.play()
+            }}
           >
             Call Recycle Robot
           </LoadingButton>
-          <button
-            onClick={() => {
-              setArrival(true)
-            }}
-          >
-            test
-          </button>
         </Box>
       </Box>
       {arrival && <NestedModal open={arrival} />}
@@ -103,9 +104,10 @@ const Robot = () => {
           <Player
             src='https://assets7.lottiefiles.com/packages/lf20_eHZRuUxa9i.json'
             speed={1}
-            autoplay={true}
+            autoplay={false}
             loop
             style={{ width: '350px' }}
+            ref={lottieRef}
           />
         </Box>
         {/* ROW 2 */}

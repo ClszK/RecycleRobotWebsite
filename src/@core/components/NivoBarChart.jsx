@@ -39,10 +39,11 @@ const NivoBarChart = ({ isDashboard = true }) => {
           }
         }
       }}
-      keys={['hot dog', 'burger', 'sandwich']}
-      indexBy='country'
+      keys={['battery', 'cpu', 'gpu']}
+      indexBy='sensor'
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}
+      maxValue={100}
       layout='horizontal'
       valueScale={{ type: 'linear' }}
       indexScale={{ type: 'band', round: true }}
@@ -67,20 +68,6 @@ const NivoBarChart = ({ isDashboard = true }) => {
           spacing: 10
         }
       ]}
-      fill={[
-        {
-          match: {
-            id: 'fries'
-          },
-          id: 'dots'
-        },
-        {
-          match: {
-            id: 'sandwich'
-          },
-          id: 'lines'
-        }
-      ]}
       borderColor={{
         from: 'color',
         modifiers: [['darker', 1.6]]
@@ -91,7 +78,7 @@ const NivoBarChart = ({ isDashboard = true }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: 'country',
+        legend: 'temperature',
         legendPosition: 'middle',
         legendOffset: 32
       }}
@@ -99,7 +86,7 @@ const NivoBarChart = ({ isDashboard = true }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: 'food',
+        legend: 'sensor',
         legendPosition: 'middle',
         legendOffset: -40
       }}

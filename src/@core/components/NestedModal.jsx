@@ -58,7 +58,7 @@ export default function NestedModal(props) {
   const [test, setTest] = useState(false)
   const [success, setSuccess] = useState(false)
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
 
   const handleOpen = () => {
     setOpen(true)
@@ -71,7 +71,7 @@ export default function NestedModal(props) {
   return (
     <Box>
       <Modal
-        open={props.open}
+        open={props.open && open}
         onClose={handleClose}
         aria-labelledby='parent-modal-title'
         aria-describedby='parent-modal-description'
@@ -95,13 +95,11 @@ export default function NestedModal(props) {
                 padding: '10px 20px',
                 width: '30%'
               }}
-              loading={test}
-              onClick={() => setTest(true)}
+              onClick={handleClose}
             >
-            Finish
+              Finish
             </LoadingButton>
           </Box>
-          {success && <ChildModal />}
         </Box>
       </Modal>
     </Box>
