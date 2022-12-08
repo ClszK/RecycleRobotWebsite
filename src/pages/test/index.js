@@ -1,13 +1,14 @@
 import * as React from 'react'
 import { Box } from '@mui/material'
+import axios from 'axios'
 
 const request = (serverURL, headers, AEname = '', dir = '') => {
-  const respone = ''
+  const respone = {}
   axios
     .get(`${serverURL}/Mobius${AEname}${dir}`, {
       headers: headers
     })
-    .then(respones => console.log(respones))
+    .then(respones => (respone = respones.data))
     .catch(e => {
       console.log(e)
     })
@@ -24,7 +25,8 @@ const getApplicationEntity = (AEname, serverURL) => {
   AEname = '/' + AEname
 
   const res = request(serverURL, header, AEname)
-  console.log(res.json())
+
+  // console.log(res.json())
 }
 
 const getContainer = (AEname, dir, serverURL) => {
@@ -38,7 +40,8 @@ const getContainer = (AEname, dir, serverURL) => {
   AEname = '/' + AEname
 
   const res = request(serverURL, header, AEname, directory)
-  console.log(res.json())
+
+  // console.log(res.json())
 }
 
 const getApplicationEntityList = serverURL => {
@@ -51,7 +54,7 @@ const getApplicationEntityList = serverURL => {
   const res = request(serverURL, header, '?fu=1&ty=2&lim=20')
   console.log(res)
 
-  /*return JSON.parse(res)['m2m:uril']*/
+  // return JSON.parse(res)
 }
 
 const getApplicationEntityRI = (serverURL, AEname) => {
@@ -65,7 +68,8 @@ const getApplicationEntityRI = (serverURL, AEname) => {
   const res = request(serverURL, header, AEname)
   const resJson = res.json()
   const ae_ri = resJson['m2m:ae']['ri']
-  console.log(res)
+
+  // console.log(res)
 
   return ae_ri
 }
